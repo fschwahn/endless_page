@@ -1,0 +1,39 @@
+<h1>Listing articles</h1>
+<div id='articles'>
+  <div class='page'>
+    <%= render @articles %>
+  </div>
+</div>
+
+<script type="text/javascript">
+(function() {
+  var page = 1, // current page
+      loading = false; // currently loading a new page?
+  
+  function nearBottomOfPage() {
+    return $(window).scrollTop() > $(document).height() - $(window).height() - 200;
+  }
+
+  $(window).scroll(function(){
+    if (loading) { // do nothing if already loading a new page
+      return;
+    }
+    
+    if(nearBottomOfPage()) {
+      loading=true;
+      page++;
+      $.ajax({ // send an ajax-request to load the next page
+        url: '/articles?page=' + page,
+        type: 'get',
+        dataType: 'script',
+        success: function() { // after successfully completing the ajax-request redraw the sausage-navigation.
+          $(window).sausage('draw');
+          loading=false;
+        }
+      });
+    }
+  });
+    
+  $(window).sausage();
+}());
+</script>

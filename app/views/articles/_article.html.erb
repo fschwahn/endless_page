@@ -1,0 +1,8 @@
+<div class='article'>
+  <h3><%= article.title %></h3>
+  <div class='author'>by <%= article.author %></div>
+  <div class='date'>by <%= article.created_at.to_s(:long) %></div>
+  <p>
+    <%= article.body %>
+  </p>
+</div>

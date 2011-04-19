@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EndlessPage</title>
+  <%= stylesheet_link_tag 'http://yui.yahooapis.com/combo?2.8.1/build/reset/reset-min.css' %>
+  <%= stylesheet_link_tag 'http://yui.yahooapis.com/combo?2.8.1/build/reset-fonts/reset-fonts.css' %>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults, 'jquery.sausage' %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+  <div id='content'>
+    <%= yield %>
+  </div>
+
+</body>
+</html>
